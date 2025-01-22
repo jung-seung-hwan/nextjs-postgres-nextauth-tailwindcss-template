@@ -4,13 +4,18 @@ export default {
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
-        search: ''
+        search: '',
       },
       {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com',
-        search: ''
-      }
-    ]
-  }
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example.com', // 추가된 이미지 호스트
+        search: '',
+      },
+    ],
+  },
 };
