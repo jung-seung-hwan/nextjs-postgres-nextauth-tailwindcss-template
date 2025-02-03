@@ -32,8 +32,13 @@
 
 // export default App;
 
+"use client";
 
-import VueWrapper from "../../../src/components/VueWrapper";
+import dynamic from "next/dynamic";
+
+const VueWrapper = dynamic(() => import("../../../src/components/VueWrapper"), {
+  ssr: false, // 서버 사이드 렌더링 비활성화
+});
 
 export default function TestPage() {
   return (

@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+"use client"; // 👈 추가
 
 export default function VueWrapper() {
   return (
