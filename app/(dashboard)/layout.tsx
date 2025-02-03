@@ -25,7 +25,7 @@ import {
   TooltipContent,
   TooltipTrigger
 } from '@/components/ui/tooltip';
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 import { User } from './user';
 import { VercelLogo } from '@/components/icons';
 import Providers from './providers';
@@ -52,7 +52,7 @@ export default function DashboardLayout({
             {children}
           </main>
         </div>
-        <Analytics />
+        {/* <Analytics /> */}
       </main>
     </Providers>
   );
@@ -87,6 +87,10 @@ function DesktopNav() {
         </NavItem>
 
         <NavItem href="#" label="Analytics">
+          <LineChart className="h-5 w-5" />
+        </NavItem>
+
+        <NavItem href="/test" label="test">
           <LineChart className="h-5 w-5" />
         </NavItem>
       </nav>

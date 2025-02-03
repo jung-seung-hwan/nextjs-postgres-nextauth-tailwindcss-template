@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "An Electron & Vue.js quick start boilerplate with vue-cli support",
   "main": "meta.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SimulatedGREG/electron-vue.git"
@@ -24,6 +28,7 @@
   },
   "homepage": "https://github.com/SimulatedGREG/electron-vue#readme",
   "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
     "suppose": "^0.6.1"
   }
 }
