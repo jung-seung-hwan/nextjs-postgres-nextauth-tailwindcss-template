@@ -1,56 +1,46 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 let mainWindow;
+let vueWindow;
 
+// Electron 준비 시 실행
 app.on('ready', () => {
+  // Next.js 창 생성
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
-      preload: path.join(__dirname, 'preload.js'), // 필요한 경우 preload 스크립트
+      contextIsolation: false, // contextIsolation을 false로 설정
+      preload: path.join(__dirname, 'preload.js'), // Next.js용 preload 파일
     },
   });
 
-  // Next.js 애플리케이션 로드
-  mainWindow.loadURL('http://localhost:3000'); // 개발 중일 때
-  // mainWindow.loadFile('out/index.html'); // 배포 후
+  mainWindow.loadURL('http://localhost:3000'); // Next.js 개발 중
+  // mainWindow.loadFile('out/index.html'); // Next.js 배포 시
+
+  // Vue 창 생성
+  vueWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'vue-app/preload.js'), // Vue 앱 preload 파일
+    },
+  });
+
+  vueWindow.loadFile(path.join(__dirname, 'vue-app/dist/index.html')); // Vue 배포된 파일 로드
 });
 
+// 모든 창이 닫히면 앱 종료
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-const createVueWindow = () => {
-    const vueWindow = new BrowserWindow({
-      width: 800,
-      height: 600,
-      webPreferences: {
-        preload: path.join(__dirname, 'vue-app/preload.js'), // Vue 앱의 preload 파일
-      },
-    });
-  
-    vueWindow.loadFile(path.join(__dirname, 'vue-app/dist/index.html'));
-  };
-  
-  app.on('ready', () => {
-    createVueWindow(); // Vue 창 생성
-  });
-  
-const { ipcMain } = require('electron');
-
+// IPC 메시지 처리
 ipcMain.on('message-from-vue', (event, data) => {
   console.log('Received from Vue:', data);
   event.reply('reply-to-vue', 'Message received!');
-});
-
-const { ipcRenderer } = require('electron');
-
-ipcRenderer.send('message-from-vue', 'Hello from Vue!');
-ipcRenderer.on('reply-to-vue', (event, message) => {
-  console.log(message);
 });

@@ -5,31 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue.js 2 App</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.6.0/dist/vuetify.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.6.0"></script>
 </head>
 <body>
   <div id="app"></div> <!-- Vue.js 2가 마운트될 부분 -->
-  
-  <script>
-    new Vue({
-      el: "#app",
-      vuetify: new Vuetify(),
-      template: `
-        <v-container>
-          <v-card>
-            <v-card-title>Customers (Vue + Vuetify)</v-card-title>
-            <v-card-text>Vuetify 2를 적용한 Vue.js 2 컴포넌트입니다.</v-card-text>
-            <v-btn style="background-color: #ff5733; color: white;" @click="showAlert">Click Me</v-btn>
-          </v-card>
-        </v-container>
-      `,
-      methods: {
-        showAlert() {
-          alert("Vuetify 버튼 클릭됨!");
-        }
-      }
-    });
-  </script>
+
+  <!-- Vue CLI가 빌드한 파일을 로드 -->
+  <script src="/dist/js/app.js"></script>
 </body>
 </html>

@@ -1,11 +1,10 @@
-import Vue from "vue";
-import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
-import Customers from "./Customers.vue"; // Vue 컴포넌트 불러오기
+import Vue from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
 
-Vue.use(Vuetify);
+Vue.config.productionTip = false
 
 new Vue({
-  vuetify: new Vuetify(),
-  render: (h) => h(Customers),
-}).$mount("#app"); // Vue.js 2를 #app에 마운트
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')

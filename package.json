@@ -2,12 +2,15 @@
   "private": true,
   "main": "main.js",
   "scripts": {
-    "dev": "concurrently \"npm run vue\" \"npm run next\"",
+    "dev": "concurrently \"npm run vue\" \"npm run next\" \"npm run electron\"",
+    "build": "next build",
+    "start": "concurrently \"npm run vue-prod\" \"npm run next-prod\" \"npm run electron-prod\"",
+    "vue": "cd vue-app && npm run serve",
+    "vue-prod": "cd vue-app && npm run build && npm run serve",
     "next": "next dev",
-    "vue": "node vue-server.js",
-    "electron": "electron electron/main.js",
-    "start": "concurrently \"npm run vue\" \"npm run next\" \"npm run electron\"",
-    "build": "next build && electron-builder"
+    "next-prod": "next start",
+    "electron": "electron .",
+    "electron-prod": "electron ."
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
@@ -28,7 +31,7 @@
     "drizzle-zod": "^0.5.1",
     "express": "^4.21.2",
     "lucide-react": "^0.400.0",
-    "next": "15.1.3",
+    "next": "^15.1.6",
     "next-auth": "5.0.0-beta.25",
     "next-transpile-modules": "^10.0.1",
     "pg": "^8.13.1",
