@@ -1,10 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import vuetify from './plugins/vuetify'
+import Vue from "vue";
+import VueCustomElement from "vue-custom-element";
+import LandingPage from "./components/LandingPage.vue"; // 이 컴포넌트를 웹 컴포넌트로 변환
 
-Vue.config.productionTip = false
+// Vue Custom Element 사용
+Vue.use(VueCustomElement);
 
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+// 웹 컴포넌트 등록
+Vue.customElement("landing-page", LandingPage);
