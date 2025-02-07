@@ -6,7 +6,8 @@
         <span class="title">
           Welcome to your new project!
         </span>
-        <system-information></system-information>
+        <!-- 새로운 페이지로 이동하는 버튼 추가 -->
+        <button @click="goToAnotherPage">Go to Another Page</button>
       </div>
 
       <div class="right-side">
@@ -26,31 +27,21 @@
         </div>
       </div>
     </main>
-
-    <div class="doc">
-      <div class="title">New Page</div>
-      <!-- Vue Router가 없으므로 직접 이벤트 발생 -->
-      <button @click="navigateToNewPage">새로운 페이지로 이동</button>
-    </div>
   </div>
 </template>
 
 <script>
-import SystemInformation from './LandingPage/SystemInformation';
-
 export default {
   name: 'landing-page',
-  components: { SystemInformation },
   methods: {
     open(link) {
-      this.$electron.shell.openExternal(link);
+      window.open(link, '_blank'); // Electron 없이 외부 링크 열기
     },
-    navigateToNewPage() {
-      console.log("Navigate event dispatched!"); // 디버깅용 로그
-      window.dispatchEvent(new CustomEvent("navigate", { detail: "/new-page" }));
+    goToAnotherPage() {
+      this.$router.push('/another-page'); // Vue Router를 사용한 페이지 이동
     }
   }
-};
+}
 </script>
 
 <style>
@@ -78,7 +69,6 @@ body { font-family: 'Source Sans Pro', sans-serif; }
 
 #logo {
   height: auto;
-  max-width: 100%;
   margin-bottom: 20px;
   width: 420px;
 }
@@ -135,5 +125,22 @@ main > div { flex-basis: 50%; }
 .doc button.alt {
   color: #42b983;
   background-color: transparent;
+}
+
+/* 새로운 버튼 스타일 */
+.left-side button {
+  margin-top: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.left-side button:hover {
+  background-color: #2980b9;
 }
 </style>

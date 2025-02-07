@@ -1,6 +1,15 @@
 <template>
   <div id="app">
-    <h1>Vue App</h1>
-    <my-vue-component></my-vue-component>
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+  export default {
+    name: 'vue-app'
+  }
+</script>
+
+<style>
+  /* CSS */
+</style>
