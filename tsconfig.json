@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "./global.d.ts"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false, // ❗ Vue.js와 호환성을 위해 `false`로 변경
@@ -43,7 +46,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types/**/*.d.ts",
-    "next.config.js"
+    "next.config.js",
+    "global.d.ts"
   ],
   "exclude": [
     "node_modules"

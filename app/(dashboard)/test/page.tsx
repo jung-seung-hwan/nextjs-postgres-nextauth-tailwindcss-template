@@ -100,6 +100,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+const VueWebApp = "vue-web-app" as any;
 
 export default function TestPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -188,7 +189,7 @@ export default function TestPage() {
       <button onClick={sendCountToVue}>Vue로 count 전송</button>
       <h1>React에서 Vue.js 웹 컴포넌트 사용</h1>
       {isLoaded ? (
-        <vue-web-app data-count={"count"}></vue-web-app>
+        <VueWebApp  data-count={"count"}></VueWebApp>
       ) : (
         <p>⏳ Vue.js 웹 컴포넌트 로드 중...</p>
       )}
