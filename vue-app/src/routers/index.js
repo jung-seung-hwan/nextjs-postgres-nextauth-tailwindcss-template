@@ -45,6 +45,11 @@ export default new Router({
       component: require('../components/AnotherPage').default
     },
     {
+      path: '/name-page',
+      name: 'NamePage',
+      component: require('../components/NamePage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

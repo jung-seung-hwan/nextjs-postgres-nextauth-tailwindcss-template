@@ -8,6 +8,7 @@
         </span>
         <!-- 새로운 페이지로 이동하는 버튼 추가 -->
         <button @click="goToAnotherPage">Go to Another Page</button>
+        <button @click="goToNamePage">Go to Name Page</button>
       </div>
 
       <div class="right-side">
@@ -39,6 +40,9 @@ export default {
     },
     goToAnotherPage() {
       this.$router.push('/another-page'); // Vue Router를 사용한 페이지 이동
+    },
+    goToNamePage() {
+      this.$router.push('/name-page'); // Vue Router를 사용한 페이지 이동
     }
   }
 }
