@@ -1,4 +1,8 @@
 {
+  "name": "nextjs-electron-app",  
+  "version": "1.0.0",            
+  "description": "Next.js + Electron application", 
+  "author": "Your Name",          
   "private": true,
   "main": "main.js",
   "scripts": {
@@ -10,7 +14,28 @@
     "next": "next dev",
     "next-prod": "next start",
     "electron": "electron .",
-    "electron-prod": "electron ."
+    "electron-prod": "electron .",
+    "electron-pack": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.example.nextjs-electron",
+    "productName": "NextJS Electron App", 
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "node_modules/**/*",
+      ".next/**/*",    
+      "vue-app/dist/**/*" 
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico",
+      "artifactName": "${productName}.exe"
+    }
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
